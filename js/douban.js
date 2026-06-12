@@ -546,7 +546,7 @@ function renderDoubanCards(data, container) {
                     <img src="${noReferrerCoverUrl}" alt="${safeTitle}" 
                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                         loading="lazy" referrerpolicy="no-referrer">
-                        onerror="this.onerror=null; this.src='https://images.weserv.nl/?url=${encodeURIComponent('https://img3.doubanio.com/f/movie/5081e011148d4cc13300d83b873e17c338e84192/pics/movie/movie_default_large.png')}';">
+                        onerror="this.onerror=null; this.src='https://images.weserv.nl/?url=${encodeURIComponent('https://cdn0.popo.tw/uc/108/696172/O.jpg')}';">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
                     <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded-sm">
                         <span class="text-yellow-400">★</span> ${safeRate}
