@@ -534,8 +534,9 @@ function renderDoubanCards(data, container) {
             
             // 做法 A：直接使用第三方免費的 Web 圖片快取服務（推薦，速度快且穩定）
             // 這些服務本質上就是幫你去掉 Referer 抓取圖片
-            const noReferrerCoverUrl = `https://images.weserv.nl/?url=${encodeURIComponent(originalCoverUrl)}`;
+            //const noReferrerCoverUrl = `https://images.weserv.nl/?url=${encodeURIComponent(originalCoverUrl)}`;
             //const noReferrerCoverUrl = `https://images.weserv.nl/?url=${originalCoverUrl}`;
+            const noReferrerCoverUrl = originalCoverUrl; // 直接硬剛豆瓣原圖網址
             
             // 2. 也准备代理URL作为备选
             //const proxiedCoverUrl = PROXY_URL + encodeURIComponent(originalCoverUrl);
