@@ -532,10 +532,13 @@ function renderDoubanCards(data, container) {
             // 1. 直接使用豆瓣图片URL (添加no-referrer属性)
             const originalCoverUrl = item.cover;
 
+            // 乾淨的處理：去掉 http: 或 https:，只留 //img1.doubanio.com/...
+            const cleanUrl = originalCoverUrl.replace(/^https?:/, '');
+            
             // 做法 A：直接使用第三方免費的 Web 圖片快取服務（推薦，速度快且穩定）
             // 這些服務本質上就是幫你去掉 Referer 抓取圖片
             //const noReferrerCoverUrl = `https://images.weserv.nl/?url=${encodeURIComponent(originalCoverUrl)}`;
-            const noReferrerCoverUrl = `https://images.weserv.nl/?url=${originalCoverUrl}`;
+            const noReferrerCoverUrl = `https://images.weserv.nl/?url=${cleanUrl}`;
             
             // 2. 也准备代理URL作为备选
             const proxiedCoverUrl = PROXY_URL + encodeURIComponent(originalCoverUrl);
@@ -545,7 +548,7 @@ function renderDoubanCards(data, container) {
                 <div class="relative w-full aspect-[2/3] overflow-hidden cursor-pointer" onclick="fillAndSearchWithDouban('${safeTitle}')">
                     <img src="${noReferrerCoverUrl}" alt="${safeTitle}" 
                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                        onerror="this.onerror=null; this.src='${noReferrerCoverUrl}'; this.classList.add('object-contain');"
+                        onerror="this.onerror=null; this.src='${proxiedCoverUrl}'; this.classList.add('object-contain');"
                         loading="lazy" referrerpolicy="no-referrer">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
                     <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded-sm">
